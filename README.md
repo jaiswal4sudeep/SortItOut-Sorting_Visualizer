@@ -1,4 +1,4 @@
-# mainapp
+# SortItOut - Sorting Visualizer
 
 A new Flutter project.
 
