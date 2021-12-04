@@ -389,7 +389,7 @@ class _HomePageState extends State<HomePage> {
           if (isWarning) {
             lastPressed = DateTime.now();
             final snackBar = SnackBar(
-              content: const Text('Double Tap to Close the App'),
+              content: const Text('Press back again to exit SortItOut app.'),
               duration: maxDuration,
             );
             ScaffoldMessenger.of(context)
