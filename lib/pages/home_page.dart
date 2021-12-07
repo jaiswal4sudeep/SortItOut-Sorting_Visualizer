@@ -236,7 +236,7 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         centerTitle: true,
         title: Text(
-          currentSortingTitle,
+          currentSortingTitle.toUpperCase(),
           style: const TextStyle(
             color: Color(0xFFCDD1CC),
             letterSpacing: 2.0,
