@@ -117,7 +117,7 @@ class _HomePageState extends State<HomePage> {
           numbers[j] = numbers[i];
           numbers[i] = temp;
         }
-        await Future.delayed(const Duration(microseconds: 1000));
+        await Future.delayed(Duration(microseconds: currentDuration));
         setState(() {});
       }
     }
@@ -133,11 +133,11 @@ class _HomePageState extends State<HomePage> {
       while (j >= 0 && temp < numbers[j]) {
         numbers[j + 1] = numbers[j];
         --j;
-        await Future.delayed(const Duration(microseconds: 1000));
+        await Future.delayed(Duration(microseconds: currentDuration));
         setState(() {});
       }
       numbers[j + 1] = temp;
-      await Future.delayed(const Duration(microseconds: 5000));
+      await Future.delayed(Duration(microseconds: currentDuration));
       setState(() {});
     }
     isSorting = false;
@@ -154,7 +154,7 @@ class _HomePageState extends State<HomePage> {
           numbers[j] = numbers[j - gap];
         }
         numbers[j] = temp;
-        await Future.delayed(const Duration(microseconds: 1000));
+        await Future.delayed(Duration(microseconds: currentDuration));
         setState(() {});
       }
     }
@@ -184,7 +184,7 @@ class _HomePageState extends State<HomePage> {
 
         index--;
       }
-      await Future.delayed(const Duration(microseconds: 1000));
+      await Future.delayed(Duration(microseconds: currentDuration));
       setState(() {});
     }
     preColor = const Color(0xFF0AB377);
@@ -205,7 +205,7 @@ class _HomePageState extends State<HomePage> {
           numbers[i] = numbers[i + 1];
           numbers[i + 1] = temp;
           isSorted = false;
-          await Future.delayed(const Duration(microseconds: 1000));
+          await Future.delayed(Duration(microseconds: currentDuration));
           setState(() {});
         }
       }
@@ -216,7 +216,7 @@ class _HomePageState extends State<HomePage> {
           numbers[i] = numbers[i + 1];
           numbers[i + 1] = temp;
           isSorted = false;
-          await Future.delayed(const Duration(microseconds: 1000));
+          await Future.delayed(Duration(microseconds: currentDuration));
           setState(() {});
         }
       }
@@ -486,6 +486,9 @@ class _HomePageState extends State<HomePage> {
                                   activeTrackColor: Color(0xFFCDD1CC),
                                   inactiveTrackColor: Color(0xFF8C8C94),
                                   valueIndicatorColor: Color(0xFF8C8C94),
+                                  disabledActiveTrackColor: Color(0xFFCDD1CC),
+                                  disabledInactiveTrackColor: Color(0xFF8C8C94),
+                                  disabledThumbColor: Color(0xFFCDD1CC),
                                   activeTickMarkColor: Colors.transparent,
                                   inactiveTickMarkColor: Colors.transparent,
                                 ),
@@ -495,22 +498,26 @@ class _HomePageState extends State<HomePage> {
                                   max: maxDuration,
                                   divisions: divisionDuration,
                                   label: initialDuration.round().toString(),
-                                  onChanged: (double value) {
-                                    setState(() {
-                                      initialDuration = value.round();
-                                      if (initialDuration == 5) {
-                                        currentDuration = 500 * 1;
-                                      } else if (initialDuration == 4) {
-                                        currentDuration = 500 * 2;
-                                      } else if (initialDuration == 3) {
-                                        currentDuration = 500 * 3;
-                                      } else if (initialDuration == 2) {
-                                        currentDuration = 500 * 4;
-                                      } else if (initialDuration == 1) {
-                                        currentDuration = 500 * 5;
-                                      }
-                                    });
-                                  },
+                                  onChanged: isSorting
+                                      ? null
+                                      : (double value) {
+                                          setState(
+                                            () {
+                                              initialDuration = value.round();
+                                              if (initialDuration == 5) {
+                                                currentDuration = 500 * 1;
+                                              } else if (initialDuration == 4) {
+                                                currentDuration = 500 * 2;
+                                              } else if (initialDuration == 3) {
+                                                currentDuration = 500 * 3;
+                                              } else if (initialDuration == 2) {
+                                                currentDuration = 500 * 4;
+                                              } else if (initialDuration == 1) {
+                                                currentDuration = 500 * 5;
+                                              }
+                                            },
+                                          );
+                                        },
                                   semanticFormatterCallback: (double newValue) {
                                     return "${newValue.round()} dollars";
                                   },
