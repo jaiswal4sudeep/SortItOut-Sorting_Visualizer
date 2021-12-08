@@ -86,7 +86,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   bubbleSort() async {
-    isSorting = !isSorting;
+    isSorting = true;
     for (int i = 0; i < numbers.length; ++i) {
       for (int j = 0; j < numbers.length - i - 1; ++j) {
         if (numbers[j] > numbers[j + 1]) {
@@ -94,16 +94,16 @@ class _HomePageState extends State<HomePage> {
           numbers[j] = numbers[j + 1];
           numbers[j + 1] = temp;
         }
-        await Future.delayed(const Duration(microseconds: 5000));
+        await Future.delayed(const Duration(microseconds: 1000));
         setState(() {});
       }
     }
-    isSorting = !isSorting;
+    isSorting = false;
     preColor = const Color(0xFF0AB377);
   }
 
   selectionSort() async {
-    isSorting = !isSorting;
+    isSorting = true;
     for (int i = 0; i < numbers.length; i++) {
       for (int j = i + 1; j < numbers.length; j++) {
         if (numbers[i] > numbers[j]) {
@@ -111,35 +111,35 @@ class _HomePageState extends State<HomePage> {
           numbers[j] = numbers[i];
           numbers[i] = temp;
         }
-        await Future.delayed(const Duration(microseconds: 5000));
+        await Future.delayed(const Duration(microseconds: 1000));
         setState(() {});
       }
     }
-    isSorting = !isSorting;
+    isSorting = false;
     preColor = const Color(0xFF0AB377);
   }
 
   insertionSort() async {
-    isSorting = !isSorting;
+    isSorting = true;
     for (int i = 1; i < numbers.length; i++) {
       int temp = numbers[i];
       int j = i - 1;
       while (j >= 0 && temp < numbers[j]) {
         numbers[j + 1] = numbers[j];
         --j;
-        await Future.delayed(const Duration(microseconds: 5000));
+        await Future.delayed(const Duration(microseconds: 1000));
         setState(() {});
       }
       numbers[j + 1] = temp;
       await Future.delayed(const Duration(microseconds: 5000));
       setState(() {});
     }
-    isSorting = !isSorting;
+    isSorting = false;
     preColor = const Color(0xFF0AB377);
   }
 
   shellSort() async {
-    isSorting = !isSorting;
+    isSorting = true;
     for (int gap = numbers.length ~/ 2; gap > 0; gap ~/= 2) {
       for (int i = gap; i < numbers.length; i += 1) {
         int temp = numbers[i];
@@ -148,11 +148,11 @@ class _HomePageState extends State<HomePage> {
           numbers[j] = numbers[j - gap];
         }
         numbers[j] = temp;
-        await Future.delayed(const Duration(microseconds: 5000));
+        await Future.delayed(const Duration(microseconds: 1000));
         setState(() {});
       }
     }
-    isSorting = !isSorting;
+    isSorting = false;
     preColor = const Color(0xFF0AB377);
   }
 
@@ -164,7 +164,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   gnomeSort() async {
-    isSorting = !isSorting;
+    isSorting = true;
     int index = 0;
 
     while (index < numbers.length) {
@@ -178,16 +178,16 @@ class _HomePageState extends State<HomePage> {
 
         index--;
       }
-      await Future.delayed(const Duration(microseconds: 5000));
+      await Future.delayed(const Duration(microseconds: 1000));
       setState(() {});
     }
     preColor = const Color(0xFF0AB377);
-    isSorting = !isSorting;
+    isSorting = false;
     return;
   }
 
   oddEvenSort() async {
-    isSorting = !isSorting;
+    isSorting = true;
     bool isSorted = false;
 
     while (!isSorted) {
@@ -199,7 +199,7 @@ class _HomePageState extends State<HomePage> {
           numbers[i] = numbers[i + 1];
           numbers[i + 1] = temp;
           isSorted = false;
-          await Future.delayed(const Duration(microseconds: 5000));
+          await Future.delayed(const Duration(microseconds: 1000));
           setState(() {});
         }
       }
@@ -210,12 +210,12 @@ class _HomePageState extends State<HomePage> {
           numbers[i] = numbers[i + 1];
           numbers[i + 1] = temp;
           isSorted = false;
-          await Future.delayed(const Duration(microseconds: 5000));
+          await Future.delayed(const Duration(microseconds: 1000));
           setState(() {});
         }
       }
     }
-    isSorting = !isSorting;
+    isSorting = false;
     preColor = const Color(0xFF0AB377);
 
     return;
