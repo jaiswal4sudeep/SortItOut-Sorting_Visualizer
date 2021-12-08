@@ -518,9 +518,9 @@ class _HomePageState extends State<HomePage> {
                                             },
                                           );
                                         },
-                                  semanticFormatterCallback: (double newValue) {
-                                    return "${newValue.round()} dollars";
-                                  },
+                                  // semanticFormatterCallback: (double newValue) {
+                                  //   return "${newValue.round()} dollars";
+                                  // },
                                 ),
                               ),
                             ),
@@ -539,28 +539,29 @@ class _HomePageState extends State<HomePage> {
                               mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
                                 ElevatedButton(
-                                  onPressed: randomize,
+                                  onPressed: isSorting ? null : randomize,
                                   child: const Icon(
                                     Icons.refresh_outlined,
                                     size: 30,
                                   ),
                                   style: ElevatedButton.styleFrom(
+                                    primary: const Color(0xFF2196F3),
+                                    onSurface: const Color(0xFF2196F3),
                                     shape: const CircleBorder(),
                                     padding: const EdgeInsets.all(10),
                                   ),
                                 ),
                                 ElevatedButton(
-                                  onPressed: sortItOut,
+                                  onPressed: isSorting ? null : sortItOut,
                                   child: Icon(
                                     isSorting ? Icons.pause : Icons.play_arrow,
                                     size: 30,
                                   ),
                                   style: ElevatedButton.styleFrom(
+                                    primary: const Color(0xFF0AB377),
+                                    onSurface: const Color(0xFFFF473C),
                                     shape: const CircleBorder(),
                                     padding: const EdgeInsets.all(10),
-                                    primary: isSorting
-                                        ? const Color(0xFfFF4438)
-                                        : const Color(0xFF0AB377),
                                   ),
                                 ),
                               ],
