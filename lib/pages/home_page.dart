@@ -437,8 +437,8 @@ class _HomePageState extends State<HomePage> {
               }).toList(),
             ),
             DraggableScrollableSheet(
-              initialChildSize: .25,
-              minChildSize: .25,
+              initialChildSize: .235,
+              minChildSize: .235,
               // maxChildSize: .3,
               builder:
                   (BuildContext context, ScrollController scrollController) {
@@ -497,7 +497,8 @@ class _HomePageState extends State<HomePage> {
                                   min: minDuration,
                                   max: maxDuration,
                                   divisions: divisionDuration,
-                                  label: initialDuration.round().toString(),
+                                  label:
+                                      initialDuration.round().toString() + 'x',
                                   onChanged: isSorting
                                       ? null
                                       : (double value) {
