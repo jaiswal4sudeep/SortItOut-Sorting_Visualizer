@@ -21,6 +21,12 @@ class _HomePageState extends State<HomePage> {
 
   bool isSorting = false;
 
+  int initialDuration = 3;
+  final double minDuration = 1.0;
+  final double maxDuration = 5.0;
+  final divisionDuration = 10;
+  late int currentDuration = 500;
+
   GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
 
   Color preColor = const Color(0xFFCDD1CC);
@@ -94,7 +100,7 @@ class _HomePageState extends State<HomePage> {
           numbers[j] = numbers[j + 1];
           numbers[j + 1] = temp;
         }
-        await Future.delayed(const Duration(microseconds: 1000));
+        await Future.delayed(Duration(microseconds: currentDuration));
         setState(() {});
       }
     }
@@ -431,8 +437,8 @@ class _HomePageState extends State<HomePage> {
               }).toList(),
             ),
             DraggableScrollableSheet(
-              initialChildSize: .125,
-              minChildSize: .125,
+              initialChildSize: .25,
+              minChildSize: .25,
               // maxChildSize: .3,
               builder:
                   (BuildContext context, ScrollController scrollController) {
@@ -455,13 +461,72 @@ class _HomePageState extends State<HomePage> {
                   child: ListView(
                     controller: scrollController,
                     children: [
+                      const Padding(
+                        padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
+                        child: RotatedBox(
+                          quarterTurns: 1,
+                          child: Icon(
+                            Icons.arrow_back_ios_rounded,
+                            color: Color(0xFFCDD1CC),
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 20),
+                        child: Row(
+                          children: [
+                            const Icon(
+                              Icons.timer,
+                              color: Color(0xFFCDD1CC),
+                            ),
+                            Expanded(
+                              child: SliderTheme(
+                                data: const SliderThemeData(
+                                  thumbColor: Color(0xFFCDD1CC),
+                                  activeTrackColor: Color(0xFFCDD1CC),
+                                  inactiveTrackColor: Color(0xFF8C8C94),
+                                  valueIndicatorColor: Color(0xFF8C8C94),
+                                  activeTickMarkColor: Colors.transparent,
+                                  inactiveTickMarkColor: Colors.transparent,
+                                ),
+                                child: Slider(
+                                  value: initialDuration.toDouble(),
+                                  min: minDuration,
+                                  max: maxDuration,
+                                  divisions: divisionDuration,
+                                  label: initialDuration.round().toString(),
+                                  onChanged: (double value) {
+                                    setState(() {
+                                      initialDuration = value.round();
+                                      if (initialDuration == 5) {
+                                        currentDuration = 500 * 1;
+                                      } else if (initialDuration == 4) {
+                                        currentDuration = 500 * 2;
+                                      } else if (initialDuration == 3) {
+                                        currentDuration = 500 * 3;
+                                      } else if (initialDuration == 2) {
+                                        currentDuration = 500 * 4;
+                                      } else if (initialDuration == 1) {
+                                        currentDuration = 500 * 5;
+                                      }
+                                    });
+                                  },
+                                  semanticFormatterCallback: (double newValue) {
+                                    return "${newValue.round()} dollars";
+                                  },
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Padding(
                             padding: const EdgeInsets.symmetric(
                               horizontal: 8.0,
-                              vertical: 20,
+                              vertical: 10,
                             ),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceAround,
