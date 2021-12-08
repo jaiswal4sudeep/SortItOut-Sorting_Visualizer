@@ -437,17 +437,17 @@ class _HomePageState extends State<HomePage> {
               }).toList(),
             ),
             DraggableScrollableSheet(
-              initialChildSize: .235,
-              minChildSize: .23,
-              maxChildSize: .8,
+              initialChildSize: .23,
+              minChildSize: .2,
+              maxChildSize: 1,
               builder:
                   (BuildContext context, ScrollController scrollController) {
                 return Container(
                   decoration: const BoxDecoration(
                     color: Color(0xFF0E1419),
                     borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(20.0),
-                      topRight: Radius.circular(20.0),
+                      topLeft: Radius.circular(10.0),
+                      topRight: Radius.circular(10.0),
                     ),
                     boxShadow: [
                       BoxShadow(
@@ -471,70 +471,65 @@ class _HomePageState extends State<HomePage> {
                           ),
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 20),
-                        child: Row(
-                          children: [
-                            const Icon(
-                              Icons.timer,
-                              color: Color(0xFFCDD1CC),
-                            ),
-                            Expanded(
-                              child: SliderTheme(
-                                data: const SliderThemeData(
-                                  thumbColor: Color(0xFFCDD1CC),
-                                  activeTrackColor: Color(0xFFCDD1CC),
-                                  inactiveTrackColor: Color(0xFF8C8C94),
-                                  valueIndicatorColor: Color(0xFF8C8C94),
-                                  disabledActiveTrackColor: Color(0xFFCDD1CC),
-                                  disabledInactiveTrackColor: Color(0xFF8C8C94),
-                                  disabledThumbColor: Color(0xFFCDD1CC),
-                                  activeTickMarkColor: Colors.transparent,
-                                  inactiveTickMarkColor: Colors.transparent,
-                                ),
-                                child: Slider(
-                                  value: initialDuration.toDouble(),
-                                  min: minDuration,
-                                  max: maxDuration,
-                                  divisions: divisionDuration,
-                                  label:
-                                      initialDuration.round().toString() + 'x',
-                                  onChanged: isSorting
-                                      ? null
-                                      : (double value) {
-                                          setState(
-                                            () {
-                                              initialDuration = value.round();
-                                              if (initialDuration == 5) {
-                                                currentDuration = 500 * 1;
-                                              } else if (initialDuration == 4) {
-                                                currentDuration = 500 * 2;
-                                              } else if (initialDuration == 3) {
-                                                currentDuration = 500 * 3;
-                                              } else if (initialDuration == 2) {
-                                                currentDuration = 500 * 4;
-                                              } else if (initialDuration == 1) {
-                                                currentDuration = 500 * 5;
-                                              }
-                                            },
-                                          );
-                                        },
-                                  // semanticFormatterCallback: (double newValue) {
-                                  //   return "${newValue.round()} dollars";
-                                  // },
-                                ),
+                      Row(
+                        children: [
+                          const Icon(
+                            Icons.timer,
+                            color: Color(0xFFCDD1CC),
+                          ),
+                          Expanded(
+                            child: SliderTheme(
+                              data: const SliderThemeData(
+                                thumbColor: Color(0xFFCDD1CC),
+                                activeTrackColor: Color(0xFFCDD1CC),
+                                inactiveTrackColor: Color(0xFF8C8C94),
+                                valueIndicatorColor: Color(0xFF8C8C94),
+                                disabledActiveTrackColor: Color(0xFFCDD1CC),
+                                disabledInactiveTrackColor: Color(0xFF8C8C94),
+                                disabledThumbColor: Color(0xFFCDD1CC),
+                                activeTickMarkColor: Colors.transparent,
+                                inactiveTickMarkColor: Colors.transparent,
+                              ),
+                              child: Slider(
+                                value: initialDuration.toDouble(),
+                                min: minDuration,
+                                max: maxDuration,
+                                divisions: divisionDuration,
+                                label: initialDuration.round().toString() + 'x',
+                                onChanged: isSorting
+                                    ? null
+                                    : (double value) {
+                                        setState(
+                                          () {
+                                            initialDuration = value.round();
+                                            if (initialDuration == 5) {
+                                              currentDuration = 500 * 1;
+                                            } else if (initialDuration == 4) {
+                                              currentDuration = 500 * 2;
+                                            } else if (initialDuration == 3) {
+                                              currentDuration = 500 * 3;
+                                            } else if (initialDuration == 2) {
+                                              currentDuration = 500 * 4;
+                                            } else if (initialDuration == 1) {
+                                              currentDuration = 500 * 5;
+                                            }
+                                          },
+                                        );
+                                      },
+                                // semanticFormatterCallback: (double newValue) {
+                                //   return "${newValue.round()} dollars";
+                                // },
                               ),
                             ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Padding(
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 8.0,
-                              vertical: 10,
+                            padding: const EdgeInsets.only(
+                              bottom: 8.0,
                             ),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceAround,
