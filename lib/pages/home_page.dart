@@ -232,7 +232,7 @@ class _HomePageState extends State<HomePage> {
     int counter = 0;
     return Scaffold(
       key: scaffoldKey,
-      backgroundColor: const Color(0xFF0E1419),
+      backgroundColor: Colors.transparent,
       appBar: AppBar(
         centerTitle: true,
         title: Text(
@@ -241,6 +241,7 @@ class _HomePageState extends State<HomePage> {
             color: Color(0xFFCDD1CC),
             letterSpacing: 2.0,
             wordSpacing: 2.0,
+            fontWeight: FontWeight.w600,
           ),
         ),
         backgroundColor: const Color(0xFF0E1419),
@@ -402,6 +403,20 @@ class _HomePageState extends State<HomePage> {
         },
         child: Stack(
           children: [
+            Container(
+              width: double.infinity,
+              height: double.infinity,
+              decoration: const BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.bottomCenter,
+                  end: Alignment.topCenter,
+                  colors: [
+                    Color(0xFF28313B),
+                    Color(0xFF000000),
+                  ],
+                ),
+              ),
+            ),
             Row(
               children: numbers.map((int number) {
                 counter++;
