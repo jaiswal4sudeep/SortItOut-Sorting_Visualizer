@@ -1,6 +1,62 @@
+import 'dart:async';
 import 'dart:math';
 import 'dart:ui';
 import 'package:flutter/material.dart';
+
+class SplashScreen extends StatefulWidget {
+  const SplashScreen({Key? key}) : super(key: key);
+
+  @override
+  _SplashScreenState createState() => _SplashScreenState();
+}
+
+class _SplashScreenState extends State<SplashScreen> {
+  @override
+  void initState() {
+    super.initState();
+    Timer(
+      const Duration(seconds: 3),
+      () => Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (context) => const HomePage(),
+        ),
+      ),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Container(
+        color: const Color(0xFF0E1419),
+        child: Stack(
+          alignment: Alignment.center,
+          children: const [
+            Center(
+              child: Image(
+                image: AssetImage('assets/images/splashlogo.png'),
+              ),
+            ),
+            Positioned(
+              bottom: 60,
+              child: Text(
+                'SortItOut',
+                style: TextStyle(
+                  fontFamily: 'Roboto',
+                  fontSize: 24,
+                  fontWeight: FontWeight.w600,
+                  color: Color(0xFFD3D3D3),
+                  letterSpacing: 1.4,
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
