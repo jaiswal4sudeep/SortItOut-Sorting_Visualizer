@@ -128,10 +128,6 @@ class _HomePageState extends State<HomePage> {
         await shellSort();
         break;
 
-      case "Gnome Sort":
-        await gnomeSort();
-        break;
-
       case "Odd-Even Sort":
         await oddEvenSort();
         break;
@@ -223,29 +219,6 @@ class _HomePageState extends State<HomePage> {
 
     if (gap < 1) return 1;
     return gap;
-  }
-
-  gnomeSort() async {
-    isSorting = true;
-    int index = 0;
-
-    while (index < numbers.length) {
-      if (index == 0) index++;
-      if (numbers[index] >= numbers[index - 1]) {
-        index++;
-      } else {
-        int temp = numbers[index];
-        numbers[index] = numbers[index - 1];
-        numbers[index - 1] = temp;
-
-        index--;
-      }
-      await Future.delayed(Duration(microseconds: currentDuration));
-      setState(() {});
-    }
-    preColor = const Color(0xFF0AB377);
-    isSorting = false;
-    return;
   }
 
   oddEvenSort() async {
@@ -355,23 +328,13 @@ class _HomePageState extends State<HomePage> {
               ),
               const PopupMenuItem(
                 child: Text(
-                  'Gnome Sort',
-                  style: TextStyle(
-                    fontFamily: 'Roboto',
-                    color: Color(0xFFCDD1CC),
-                  ),
-                ),
-                value: '5',
-              ),
-              const PopupMenuItem(
-                child: Text(
                   'Odd-Even Sort',
                   style: TextStyle(
                     fontFamily: 'Roboto',
                     color: Color(0xFFCDD1CC),
                   ),
                 ),
-                value: '6',
+                value: '5',
               ),
             ],
             onSelected: (String newVal) {
@@ -424,17 +387,6 @@ class _HomePageState extends State<HomePage> {
                     break;
 
                   case '5':
-                    currentSortingTitle = 'Gnome Sort';
-                    currentSortingDef =
-                        'Gnome Sort also called Stupid sort is based on the concept of a Garden Gnome sorting his flower pots. A garden gnome sorts the flower pots by the following method-\n\tHe looks at the flower pot next to him and the previous one; if they are in the right order he steps one pot forward, otherwise he swaps them and steps one pot backwards.\n\tIf there is no previous pot (he is at the starting of the pot line), he steps forwards; if there is no pot next to him (he is at the end of the pot line), he is done.';
-                    currentSortingBestTimeComplexity = 'Θ(n)';
-                    currentSortingWorstTimeComplexity = 'Θ(n^2)';
-                    currentSortingAvgTimeComplexity = 'Θ(n^2)';
-                    currentSortingSpaceComplexity = 'Θ(1)';
-                    currentSortingCode = 'assets/images/gnomesort.png';
-                    break;
-
-                  case '6':
                     currentSortingTitle = 'Odd-Even Sort';
                     currentSortingDef =
                         'This is basically a variation of bubble-sort. This algorithm is divided into two phases- Odd and Even Phase. The algorithm runs until the array elements are sorted and in each iteration two phases occurs- Odd and Even Phases.\nIn the odd phase, we perform a bubble sort on odd indexed elements and in the even phase, we perform a bubble sort on even indexed elements.';
