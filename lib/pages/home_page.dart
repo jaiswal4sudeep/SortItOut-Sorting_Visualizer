@@ -248,6 +248,7 @@ class _HomePageState extends State<HomePage> {
             letterSpacing: 2.0,
             wordSpacing: 2.0,
             fontWeight: FontWeight.w600,
+            fontFamily: 'Roboto',
           ),
         ),
         backgroundColor: const Color(0xFF0E1419),
@@ -261,6 +262,7 @@ class _HomePageState extends State<HomePage> {
                   'Bubble Sort',
                   style: TextStyle(
                     color: Color(0xFFCDD1CC),
+                    fontFamily: 'Roboto',
                   ),
                 ),
                 value: '1',
@@ -269,6 +271,7 @@ class _HomePageState extends State<HomePage> {
                 child: Text(
                   'Selection Sort',
                   style: TextStyle(
+                    fontFamily: 'Roboto',
                     color: Color(0xFFCDD1CC),
                   ),
                 ),
@@ -278,6 +281,7 @@ class _HomePageState extends State<HomePage> {
                 child: Text(
                   'Insertion Sort',
                   style: TextStyle(
+                    fontFamily: 'Roboto',
                     color: Color(0xFFCDD1CC),
                   ),
                 ),
@@ -287,6 +291,7 @@ class _HomePageState extends State<HomePage> {
                 child: Text(
                   'Shell Sort',
                   style: TextStyle(
+                    fontFamily: 'Roboto',
                     color: Color(0xFFCDD1CC),
                   ),
                 ),
@@ -296,6 +301,7 @@ class _HomePageState extends State<HomePage> {
                 child: Text(
                   'Gnome Sort',
                   style: TextStyle(
+                    fontFamily: 'Roboto',
                     color: Color(0xFFCDD1CC),
                   ),
                 ),
@@ -305,6 +311,7 @@ class _HomePageState extends State<HomePage> {
                 child: Text(
                   'Odd-Even Sort',
                   style: TextStyle(
+                    fontFamily: 'Roboto',
                     color: Color(0xFFCDD1CC),
                   ),
                 ),
@@ -461,9 +468,10 @@ class _HomePageState extends State<HomePage> {
                   child: ListView(
                     controller: scrollController,
                     children: [
-                      const Padding(
-                        padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
-                        child: RotatedBox(
+                      Padding(
+                        padding: EdgeInsets.only(
+                            top: MediaQuery.of(context).size.width / 33),
+                        child: const RotatedBox(
                           quarterTurns: 1,
                           child: Icon(
                             Icons.arrow_back_ios_rounded,
@@ -472,24 +480,26 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ),
                       Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           const Icon(
                             Icons.timer,
                             color: Color(0xFFCDD1CC),
                           ),
-                          Expanded(
-                            child: SliderTheme(
-                              data: const SliderThemeData(
-                                thumbColor: Color(0xFFCDD1CC),
-                                activeTrackColor: Color(0xFFCDD1CC),
-                                inactiveTrackColor: Color(0xFF8C8C94),
-                                valueIndicatorColor: Color(0xFF8C8C94),
-                                disabledActiveTrackColor: Color(0xFFCDD1CC),
-                                disabledInactiveTrackColor: Color(0xFF8C8C94),
-                                disabledThumbColor: Color(0xFFCDD1CC),
-                                activeTickMarkColor: Colors.transparent,
-                                inactiveTickMarkColor: Colors.transparent,
-                              ),
+                          SliderTheme(
+                            data: const SliderThemeData(
+                              thumbColor: Color(0xFFCDD1CC),
+                              activeTrackColor: Color(0xFFCDD1CC),
+                              inactiveTrackColor: Color(0xFF8C8C94),
+                              valueIndicatorColor: Color(0xFF8C8C94),
+                              disabledActiveTrackColor: Color(0xFFCDD1CC),
+                              disabledInactiveTrackColor: Color(0xFF8C8C94),
+                              disabledThumbColor: Color(0xFFCDD1CC),
+                              activeTickMarkColor: Colors.transparent,
+                              inactiveTickMarkColor: Colors.transparent,
+                            ),
+                            child: SizedBox(
+                              width: MediaQuery.of(context).size.width / 1.3,
                               child: Slider(
                                 value: initialDuration.toDouble(),
                                 min: minDuration,
@@ -502,15 +512,15 @@ class _HomePageState extends State<HomePage> {
                                         setState(
                                           () {
                                             initialDuration = value.round();
-                                            if (initialDuration == 5) {
-                                              currentDuration = 500 * 1;
-                                            } else if (initialDuration == 4) {
-                                              currentDuration = 500 * 2;
-                                            } else if (initialDuration == 3) {
-                                              currentDuration = 500 * 3;
+                                            if (initialDuration == 1) {
+                                              currentDuration = 500 * 15;
                                             } else if (initialDuration == 2) {
-                                              currentDuration = 500 * 4;
-                                            } else if (initialDuration == 1) {
+                                              currentDuration = 500 * 12;
+                                            } else if (initialDuration == 3) {
+                                              currentDuration = 500 * 10;
+                                            } else if (initialDuration == 4) {
+                                              currentDuration = 500 * 8;
+                                            } else if (initialDuration == 5) {
                                               currentDuration = 500 * 5;
                                             }
                                           },
@@ -575,8 +585,10 @@ class _HomePageState extends State<HomePage> {
                               currentSortingTitle,
                               style: const TextStyle(
                                 color: Color(0xFF02B075),
-                                fontSize: 18,
+                                fontSize: 22,
                                 fontWeight: FontWeight.w600,
+                                fontFamily: 'Roboto',
+                                letterSpacing: 1.2,
                               ),
                             ),
                           ),
@@ -590,6 +602,7 @@ class _HomePageState extends State<HomePage> {
                               style: const TextStyle(
                                 color: Color(0xFFCDD1CC),
                                 fontSize: 15,
+                                fontFamily: 'Roboto',
                               ),
                             ),
                           ),
@@ -612,6 +625,7 @@ class _HomePageState extends State<HomePage> {
                                         Text(
                                           'Time Complexity:',
                                           style: TextStyle(
+                                            fontFamily: 'Roboto',
                                             color:
                                                 Colors.white.withOpacity(0.75),
                                           ),
@@ -624,6 +638,7 @@ class _HomePageState extends State<HomePage> {
                                             Text(
                                               'Best Case: ',
                                               style: TextStyle(
+                                                fontFamily: 'Roboto',
                                                 color: Colors.white
                                                     .withOpacity(0.9),
                                               ),
@@ -631,6 +646,7 @@ class _HomePageState extends State<HomePage> {
                                             Text(
                                               currentSortingBestTimeComplexity,
                                               style: const TextStyle(
+                                                fontFamily: 'Roboto',
                                                 color: Colors.white,
                                                 fontWeight: FontWeight.bold,
                                               ),
@@ -645,6 +661,7 @@ class _HomePageState extends State<HomePage> {
                                             Text(
                                               'Worst Case: ',
                                               style: TextStyle(
+                                                fontFamily: 'Roboto',
                                                 color: Colors.white
                                                     .withOpacity(0.9),
                                               ),
@@ -653,6 +670,7 @@ class _HomePageState extends State<HomePage> {
                                               currentSortingWorstTimeComplexity,
                                               style: const TextStyle(
                                                 color: Colors.white,
+                                                fontFamily: 'Roboto',
                                                 fontWeight: FontWeight.bold,
                                               ),
                                             ),
@@ -666,6 +684,7 @@ class _HomePageState extends State<HomePage> {
                                             Text(
                                               'Average Case: ',
                                               style: TextStyle(
+                                                fontFamily: 'Roboto',
                                                 color: Colors.white
                                                     .withOpacity(0.9),
                                               ),
@@ -673,6 +692,7 @@ class _HomePageState extends State<HomePage> {
                                             Text(
                                               currentSortingAvgTimeComplexity,
                                               style: const TextStyle(
+                                                fontFamily: 'Roboto',
                                                 color: Colors.white,
                                                 fontWeight: FontWeight.bold,
                                               ),
@@ -691,6 +711,7 @@ class _HomePageState extends State<HomePage> {
                                         Text(
                                           'Space Complexity:',
                                           style: TextStyle(
+                                            fontFamily: 'Roboto',
                                             color:
                                                 Colors.white.withOpacity(0.75),
                                           ),
@@ -703,6 +724,7 @@ class _HomePageState extends State<HomePage> {
                                             Text(
                                               'Worst Case: ',
                                               style: TextStyle(
+                                                fontFamily: 'Roboto',
                                                 color: Colors.white
                                                     .withOpacity(0.9),
                                               ),
@@ -710,6 +732,7 @@ class _HomePageState extends State<HomePage> {
                                             Text(
                                               currentSortingSpaceComplexity,
                                               style: const TextStyle(
+                                                fontFamily: 'Roboto',
                                                 color: Colors.white,
                                                 fontWeight: FontWeight.bold,
                                               ),
@@ -738,6 +761,7 @@ class _HomePageState extends State<HomePage> {
                                 Text(
                                   'Made with ',
                                   style: TextStyle(
+                                    fontFamily: 'Roboto',
                                     color: Color(0xFFCDD1CC),
                                     fontSize: 12,
                                   ),
@@ -750,6 +774,7 @@ class _HomePageState extends State<HomePage> {
                                 Text(
                                   ' By',
                                   style: TextStyle(
+                                    fontFamily: 'Roboto',
                                     color: Color(0xFFCDD1CC),
                                     fontSize: 12,
                                   ),
@@ -757,6 +782,7 @@ class _HomePageState extends State<HomePage> {
                                 Text(
                                   ' SuDeep Jaiswal',
                                   style: TextStyle(
+                                    fontFamily: 'Roboto',
                                     color: Color(0xFFCDD1CC),
                                     fontWeight: FontWeight.bold,
                                     fontSize: 12,
@@ -771,7 +797,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                 );
               },
-            )
+            ),
           ],
         ),
       ),
