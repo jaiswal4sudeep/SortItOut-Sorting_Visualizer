@@ -500,7 +500,7 @@ class _HomePageState extends State<HomePage> {
               }).toList(),
             ),
             DraggableScrollableSheet(
-              initialChildSize: .23,
+              initialChildSize: .21,
               minChildSize: .2,
               maxChildSize: 1,
               builder:
