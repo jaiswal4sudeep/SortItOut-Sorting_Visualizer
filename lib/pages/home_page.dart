@@ -1,6 +1,8 @@
 import 'dart:async';
 import 'dart:math';
 import 'dart:ui';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -81,7 +83,7 @@ class _HomePageState extends State<HomePage> {
   final double minDuration = 1.0;
   final double maxDuration = 5.0;
   final divisionDuration = 10;
-  late int currentDuration = 500;
+  late int currentDuration = 3000;
 
   GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -521,15 +523,15 @@ class _HomePageState extends State<HomePage> {
                                           () {
                                             initialDuration = value.round();
                                             if (initialDuration == 1) {
-                                              currentDuration = 500 * 15;
+                                              currentDuration = 9000;
                                             } else if (initialDuration == 2) {
-                                              currentDuration = 500 * 12;
+                                              currentDuration = 6000;
                                             } else if (initialDuration == 3) {
-                                              currentDuration = 500 * 10;
+                                              currentDuration = 3000;
                                             } else if (initialDuration == 4) {
-                                              currentDuration = 500 * 8;
+                                              currentDuration = 1000;
                                             } else if (initialDuration == 5) {
-                                              currentDuration = 500 * 5;
+                                              currentDuration = 300;
                                             }
                                           },
                                         );
@@ -765,8 +767,8 @@ class _HomePageState extends State<HomePage> {
                             padding: const EdgeInsets.symmetric(vertical: 12),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
-                              children: const [
-                                Text(
+                              children: [
+                                const Text(
                                   'Made with ',
                                   style: TextStyle(
                                     fontFamily: 'Roboto',
@@ -774,12 +776,12 @@ class _HomePageState extends State<HomePage> {
                                     fontSize: 12,
                                   ),
                                 ),
-                                Icon(
+                                const Icon(
                                   Icons.favorite,
                                   color: Colors.red,
                                   size: 20,
                                 ),
-                                Text(
+                                const Text(
                                   ' By',
                                   style: TextStyle(
                                     fontFamily: 'Roboto',
@@ -787,13 +789,17 @@ class _HomePageState extends State<HomePage> {
                                     fontSize: 12,
                                   ),
                                 ),
-                                Text(
-                                  ' SuDeep Jaiswal',
-                                  style: TextStyle(
-                                    fontFamily: 'Roboto',
-                                    color: Color(0xFFCDD1CC),
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 12,
+                                InkWell(
+                                  onTap: () => launch(
+                                      'https://www.instagram.com/jaiswal4sudeep/'),
+                                  child: const Text(
+                                    ' SuDeep Jaiswal',
+                                    style: TextStyle(
+                                      fontFamily: 'Roboto',
+                                      color: Color(0xFFCDD1CC),
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 12,
+                                    ),
                                   ),
                                 ),
                               ],
