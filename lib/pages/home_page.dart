@@ -470,8 +470,8 @@ class _HomePageState extends State<HomePage> {
                       BoxShadow(
                         color: Color(0xFF25353F),
                         offset: Offset(5.0, 5.0),
-                        blurRadius: 15.0,
-                        spreadRadius: 1.0,
+                        blurRadius: 50.0,
+                        spreadRadius: 10.0,
                       )
                     ],
                   ),
