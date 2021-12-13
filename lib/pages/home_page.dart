@@ -531,7 +531,7 @@ class _HomePageState extends State<HomePage> {
                                             } else if (initialDuration == 4) {
                                               currentDuration = 1000;
                                             } else if (initialDuration == 5) {
-                                              currentDuration = 300;
+                                              currentDuration = 500;
                                             }
                                           },
                                         );
