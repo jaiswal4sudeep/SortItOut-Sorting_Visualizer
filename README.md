@@ -2,6 +2,10 @@
 
 A new Flutter project.
 
+## Preview -
+
+https://user-images.githubusercontent.com/51513908/150685390-3e6e8482-789f-420f-a432-b74e68534b5d.mp4
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.
@@ -16,7 +20,4 @@ For help getting started with Flutter, view our
 samples, guidance on mobile development, and a full API reference.
 
 
-Preview -
-
-https://user-images.githubusercontent.com/51513908/150685390-3e6e8482-789f-420f-a432-b74e68534b5d.mp4
 
