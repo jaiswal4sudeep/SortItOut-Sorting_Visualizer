@@ -39,3 +39,12 @@ Shell sort is a generalized version of the insertion sort algorithm. It first so
 
 This algorithm is divided into two phases- Odd and Even Phase. The algorithm runs until the array elements are sorted and in each iteration two phases occurs- Odd and Even Phases.
 In the odd phase, we perform a bubble sort on odd indexed elements and in the even phase, we perform a bubble sort on even indexed elements.
+
+
+### Demo
+
+https://user-images.githubusercontent.com/51513908/153917654-58dec828-2dba-42f0-a4e8-7b2fd1696a30.mp4
+
+
+
+
