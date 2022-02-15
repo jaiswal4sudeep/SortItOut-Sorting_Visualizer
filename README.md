@@ -45,6 +45,4 @@ In the odd phase, we perform a bubble sort on odd indexed elements and in the ev
 
 https://user-images.githubusercontent.com/51513908/153917654-58dec828-2dba-42f0-a4e8-7b2fd1696a30.mp4
 
-
-
-
+Content Credits: GFG, Tutorial Point, Programiz
